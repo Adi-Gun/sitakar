@@ -1,8 +1,8 @@
 <?php
-	$sql = $koneksi->query("SELECT count(nis) as siswa  from tb_siswa where status='Aktif'");
+	$sql = $koneksi->query("SELECT count(id_karyawan) as karyawan  from tb_karyawan where status='Aktif'");
 	while ($data= $sql->fetch_assoc()) {
 	
-		$siswa=$data['siswa'];
+		$karyawan=$data['karyawan'];
 	}
 ?>
 
@@ -42,15 +42,15 @@
 			<div class="small-box" style="border-radius:10px; background-color: #F9E0BB;">
 				<div class="inner">
 					<h2>
-						<?= $siswa; ?>
+						<?= $karyawan; ?>
 					</h2>
 
-					<h4>Siswa</h4>
+					<h4>karyawan</h4>
 				</div>
 				<div class="icon">
 					<i class="fa fa-users"></i>
 				</div>
-				<a href="?page=MyApp/data_siswa" class="small-box-footer">More info
+				<a href="?page=MyApp/data_karyawan" class="small-box-footer">More info
 					<i class="fa fa-arrow-circle-right"></i>
 				</a>
 			</div>
@@ -122,7 +122,7 @@
 		<div class="row">
 			<div class="box box-primary" style="border-radius:10px;">
 				<div class="box-header">
-					<h3><strong>Profil Sekolah</strong></h3>
+					<h3><strong>Profil UPT</strong></h3>
 					<div class="box-tools pull-right">
 						<button type="button" class="btn btn-box-tool" data-widget="collapse">
 							<i class="fa fa-minus"></i>
@@ -138,9 +138,8 @@
 						<table class="table table-bordered table-striped">
 							<thead>
 								<tr>
-									<th><h4><b>Nama Sekolah</b></h4></th>
+									<th><h4><b>Nama UPT</b></h4></th>
 									<th><h4><b>Alamat</b></h4></th>
-									<th><h4><b>Akreditasi</b></h4></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -150,14 +149,10 @@
                 				?>
 								<tr>
 									<td>
-										<?php echo $data['nama_sekolah']; ?>
+										<?php echo $data['nama_upt']; ?>
 									</td>
 									<td>
 										<?php echo $data['alamat']; ?>
-									</td>
-									<td>
-										Akreditasi
-										<?php echo $data['akreditasi']; ?>
 									</td>
 								</tr>
 								<?php

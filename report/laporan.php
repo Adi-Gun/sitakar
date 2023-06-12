@@ -24,13 +24,13 @@
 <html lang="en">
 
 <head>
-	<title>SIRAJUNG - Sistem Informasi Rajin Menabung</title>
+	<title>SITAKAR - Sistem Informasi Tabungan Karyawan</title>
 </head>
 
 <body>
 	<center>
-		<h2>Laporan Tabungan Siswa</h2>
-		<h3>SD POMOSDA</h3>
+		<h2>Laporan Tabungan Karyawan</h2>
+		<h3>KANTOR PUSAT POMOSDA</h3>
 		<p>Periode :
 			<?php $a=$dt1; echo date("d-M-Y", strtotime($a))?>
 			s/d

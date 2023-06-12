@@ -16,7 +16,7 @@ $tanggal = date("Y-m-d");
 		<li>
 			<a href="index.php">
 				<i class="fa fa-home"></i>
-				<b>SIRAJUNG</b>
+				<b>SITAKAR</b>
 			</a>
 		</li>
 	</ol>
@@ -44,8 +44,8 @@ $tanggal = date("Y-m-d");
 					<div class="box-body">
 
 						<div class="form-group">
-							<label>Siswa</label>
-							<select name="nis" id="nis" class="form-control select2" style="width: 100%;">
+							<label>Karyawan</label>
+							<select name="id_karyawan" id="id_karyawan" class="form-control select2" style="width: 100%;">
 								<option selected="selected">-- Pilih --</option>
 								<?php
                         // ambil data dari database
@@ -53,8 +53,8 @@ $tanggal = date("Y-m-d");
                         $hasil = mysqli_query($koneksi, $query);
                         while ($row = mysqli_fetch_array($hasil)) {
                         ?>
-								<option value="<?php echo $row['nis'] ?>">
-									<?php echo $row['nis'] ?>
+								<option value="<?php echo $row['id_karyawan'] ?>">
+									<?php echo $row['id_karyawan'] ?>
 									-
 									<?php echo $row['nama_siswa'] ?>
 								</option>
@@ -102,8 +102,8 @@ $tanggal = date("Y-m-d");
 		$tarik_hasil=preg_replace("/[^0-9]/", "", $tarik);
 
 		if($saldo_hasil > $tarik_hasil){
-			$sql_simpan = "INSERT INTO tb_tabungan (nis,setor,tarik,tgl,jenis,petugas) VALUES (
-				'".$_POST['nis']."',
+			$sql_simpan = "INSERT INTO tb_tabungan (id_karyawan,setor,tarik,tgl,jenis,petugas) VALUES (
+				'".$_POST['id_karyawan']."',
 				'0',
 				'".$tarik_hasil."',
 				'".$tanggal."',
@@ -145,12 +145,12 @@ $tanggal = date("Y-m-d");
 <script src="././bootstrap/lookup.js"></script>  
 <script>
     $(document).ready(function(){  
-        $('#nis').change(function(){  
-            var nis = $(this).val();  
+        $('#id_karyawan').change(function(){  
+            var id_karyawan = $(this).val();  
             $.ajax({  
                 url:"plugins/proses-ajax.php",  
                 method:"POST",  
-                data:{nis:nis},  
+                data:{id_karyawan:id_karyawan},  
                 success:function(data){  
                     $('#saldo').val(data);  
                 }  

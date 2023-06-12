@@ -1,8 +1,8 @@
 <?php
-	$sql = $koneksi->query("SELECT count(nis) as siswa  from tb_siswa where status='Aktif'");
+	$sql = $koneksi->query("SELECT count(nik) as karyawan  from tb_karyawan where status='Aktif'");
 	while ($data= $sql->fetch_assoc()) {
 	
-		$siswa=$data['siswa'];
+		$karyawan=$data['karyawan'];
 	}
 ?>
 
@@ -42,10 +42,10 @@
 			<div class="small-box bg-yellow">
 				<div class="inner">
 					<h4>
-						<?= $siswa; ?>
+						<?= $karyawan; ?>
 					</h4>
 
-					<p>Siswa Aktif</p>
+					<p>Karyawan</p>
 				</div>
 				<div class="icon">
 					<i class="ion ion-person-add"></i>

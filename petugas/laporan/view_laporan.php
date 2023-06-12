@@ -8,7 +8,7 @@
 		<li>
 			<a href="index.php">
 				<i class="fa fa-home"></i>
-				<b>SIRAJUNG</b>
+				<b>SITAKAR</b>
 			</a>
 		</li>
 	</ol>

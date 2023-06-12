@@ -1,6 +1,6 @@
 <?php
 if(isset($_GET['kode'])){
-            $sql_hapus = "DELETE FROM tb_siswa WHERE nis='".$_GET['kode']."'";
+            $sql_hapus = "DELETE FROM tb_karyawan WHERE id_karyawan='".$_GET['kode']."'";
             $query_hapus = mysqli_query($koneksi, $sql_hapus);
 
             if ($query_hapus) {
@@ -8,7 +8,7 @@ if(isset($_GET['kode'])){
                 Swal.fire({title: 'Hapus Data Berhasil',text: '',icon: 'success',confirmButtonText: 'OK'
                 }).then((result) => {
                     if (result.value) {
-                        window.location = 'index.php?page=MyApp/data_siswa';
+                        window.location = 'index.php?page=MyApp/data_karyawan';
                     }
                 })</script>";
                 }else{
@@ -16,7 +16,7 @@ if(isset($_GET['kode'])){
                 Swal.fire({title: 'Hapus Data Gagal',text: '',icon: 'error',confirmButtonText: 'OK'
                 }).then((result) => {
                     if (result.value) {
-                        window.location = 'index.php?page=NyApp/data_siswa';
+                        window.location = 'index.php?page=NyApp/data_karyawan';
                     }
                 })</script>";
             }

@@ -12,21 +12,21 @@
 <html lang="en">
 
 <head>
-	<title>SIRAJUNG - Sistem Informasi Rajin Menabung</title>
+	<title>SITAKAR - Sistem Informasi Tabungan Karyawan</title>
 </head>
 
 <body>
 	<center>
 
-		<h2>Tabungan Siswa</h2>
-		<h3>SD POMOSDA</h3>
-		<p>Jl. Wachid Hasyim No.305, Tanjung, Tanjunganom, Kec. Tanjunganom<br>Kabupaten Nganjuk, Jawa Timur 64482</p>
+		<h2>Tabungan Karyawan</h2>
+		<h3>KANTOR PUSAT POMOSDA</h3>
+		<p>Jl. Wachid Hasyim, Tanjung, Tanjunganom, Kec. Tanjunganom<br>Kabupaten Nganjuk, Jawa Timur 64482</p>
 		<p>Rajin Pangkal Pandai. Hemat Pangkal Kaya.</p>
 		<p>___________________________________________________________________</p>
 
 		<tbody>
 			<?php
-                 $sql_tampil = "select * from tb_siswa 
+                 $sql_tampil = "select * from tb_karyawan
                  where nis ='$nis'";
                  
                  $query_tampil = mysqli_query($koneksi, $sql_tampil);
@@ -38,15 +38,15 @@
 				<td>NIS</td>
 				<td>:</td>
 				<td>
-					<?php echo $data['nis']; ?>
+					<?php echo $data['id_karyawan']; ?>
 				</td>
 			</tr>
 			<br>
 			<tr>
-				<td>Nama Siswa</td>
+				<td>Nama karyawan</td>
 				<td>:</td>
 				<td>
-					<?php echo $data['nama_siswa']; ?>
+					<?php echo $data['nama_karyawan']; ?>
 				</td>
 			</tr>
 			<br>
@@ -69,9 +69,9 @@
 			<tbody>
 
 				<?php
-                $sql_tampil = "select s.nis, s.nama_siswa, t.id_tabungan, t.setor, t.tarik, t.tgl, t.petugas from 
-                tb_siswa s join tb_tabungan t on s.nis=t.nis 
-                where s.nis ='$nis' order by tgl asc";
+                $sql_tampil = "select k.id_karyawan, k.nama_karyawan, t.id_tabungan, t.setor, t.tarik, t.tgl, t.petugas from 
+                tb_karyawan k join tb_tabungan t on k.nik=t.nik 
+                where k.id_karyawan ='$id_karyawan' order by tgl asc";
                 
                 $query_tampil = mysqli_query($koneksi, $sql_tampil);
                 $no=1;
@@ -103,7 +103,7 @@
 				<td colspan="2">Total Setoran</td>
 				<td colspan="3">
 					<?php
-                    $sql = $koneksi->query("SELECT SUM(setor) as Tsetor  from tb_tabungan where jenis='ST' and nis='$nis'");
+                    $sql = $koneksi->query("SELECT SUM(setor) as Tsetor  from tb_tabungan where jenis='ST' and id_karyawan='$id_karyawan'");
                     while ($data= $sql->fetch_assoc()) {
                     echo rupiah($data['Tsetor']); }?>
 				</td>
@@ -112,7 +112,7 @@
 				<td colspan="3">Total Penarikan</td>
 				<td colspan="3">
 					<?php
-                    $sql = $koneksi->query("SELECT SUM(tarik) as Ttarik  from tb_tabungan where jenis='TR' and nis='$nis'");
+                    $sql = $koneksi->query("SELECT SUM(tarik) as Ttarik  from tb_tabungan where jenis='TR' and id_karyawan='$id_karyawan'");
                     while ($data= $sql->fetch_assoc()) {
                     echo rupiah($data['Ttarik']); }?>
 				</td>
@@ -121,7 +121,7 @@
 				<td colspan="2">Saldo Tabungan</td>
 				<td colspan="3">
 					<?php
-                    $sql = $koneksi->query("SELECT SUM(setor)-SUM(tarik) as Total  from tb_tabungan where nis='$nis'");
+                    $sql = $koneksi->query("SELECT SUM(setor)-SUM(tarik) as Total  from tb_tabungan where id_karyawan='$id_karyawan'");
                     while ($data= $sql->fetch_assoc()) {
                     echo rupiah($data['Total']); }?>
 				</td>

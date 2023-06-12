@@ -1,7 +1,7 @@
 <section class="content-header">
 	<h1>
 		Master Data
-		<small>Siswa</small>
+		<small>Karyawan</small>
 	</h1>
 	<ol class="breadcrumb">
 		<li>
@@ -19,7 +19,7 @@
 			<!-- general form elements -->
 			<div class="box box-info">
 				<div class="box-header with-border">
-					<h3 class="box-title">Tambah Siswa</h3>
+					<h3 class="box-title">Tambah karyawan</h3>
 					<div class="box-tools pull-right">
 						<button type="button" class="btn btn-box-tool" data-widget="collapse">
 							<i class="fa fa-minus"></i>
@@ -34,13 +34,13 @@
 				<form action="" method="post" enctype="multipart/form-data">
 					<div class="box-body">
 						<div class="form-group">
-							<label>NIS</label>
-							<input type="text" name="nis" id="nis" class="form-control" placeholder="NIS">
+							<label>Nomor Karyawan</label>
+							<input type="text" name="id_karyawan" id="id_karyawan" class="form-control" placeholder="id_karyawan">
 						</div>
 
 						<div class="form-group">
-							<label>Nama Siswa</label>
-							<input type="text" name="nama_siswa" id="nama_siswa" class="form-control" placeholder="Nama Siswa">
+							<label>Nama karyawan</label>
+							<input type="text" name="nama_karyawan" id="nama_karyawan" class="form-control" placeholder="Nama karyawan">
 						</div>
 
 						<div class="form-group">
@@ -53,17 +53,17 @@
 						</div>
 
 						<div class="form-group">
-							<label>Kelas</label>
-							<select name="id_kelas" id="id_kelas" class="form-control" required>
+							<label>UPT</label>
+							<select name="id_upt" id="id_upt" class="form-control" required>
 								<option value="">-- Pilih --</option>
 								<?php
 								// ambil data dari database
-								$query = "select * from tb_kelas";
+								$query = "select * from tb_upt";
 								$hasil = mysqli_query($koneksi, $query);
 								while ($row = mysqli_fetch_array($hasil)) {
 								?>
-								<option value="<?php echo $row['id_kelas'] ?>">
-									<?php echo $row['kelas'] ?>
+								<option value="<?php echo $row['id_upt'] ?>">
+									<?php echo $row['upt'] ?>
 								</option>
 								<?php
                   }
@@ -81,7 +81,7 @@
 
 					<div class="box-footer">
 						<input type="submit" name="Simpan" value="Simpan" class="btn btn-info">
-						<a href="?page=MyApp/data_siswa" class="btn btn-warning">Batal</a>
+						<a href="?page=MyApp/data_karyawan" class="btn btn-warning">Batal</a>
 					</div>
 				</form>
 			</div>
@@ -92,11 +92,11 @@
 
     if (isset ($_POST['Simpan'])){
     
-        $sql_simpan = "INSERT INTO tb_siswa (nis,nama_siswa,jekel,id_kelas,status,th_masuk) VALUES (
-           '".$_POST['nis']."',
-          '".$_POST['nama_siswa']."',
+        $sql_simpan = "INSERT INTO tb_karyawan (id_karyawan,nama_karyawan,jekel,id_upt,status,th_masuk) VALUES (
+           '".$_POST['id_karyawan']."',
+          '".$_POST['nama_karyawan']."',
           '".$_POST['jekel']."',
-          '".$_POST['id_kelas']."',
+          '".$_POST['id_upt']."',
           'Aktif',
           '".$_POST['th_masuk']."')";
         $query_simpan = mysqli_query($koneksi, $sql_simpan);
@@ -108,7 +108,7 @@
       Swal.fire({title: 'Tambah Data Berhasil',text: '',icon: 'success',confirmButtonText: 'OK'
       }).then((result) => {
           if (result.value) {
-              window.location = 'index.php?page=MyApp/data_siswa';
+              window.location = 'index.php?page=MyApp/data_karyawan';
           }
       })</script>";
       }else{
@@ -116,7 +116,7 @@
       Swal.fire({title: 'Tambah Data Gagal',text: '',icon: 'error',confirmButtonText: 'OK'
       }).then((result) => {
           if (result.value) {
-              window.location = 'index.php?page=MyApp/add_siswa';
+              window.location = 'index.php?page=MyApp/add_karyawan';
           }
       })</script>";
     }

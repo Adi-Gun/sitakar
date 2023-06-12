@@ -1,7 +1,7 @@
 <?php
 
     if(isset($_GET['kode'])){
-        $sql_cek = "SELECT * FROM tb_siswa WHERE nis='".$_GET['kode']."'";
+        $sql_cek = "SELECT * FROM tb_karyawan WHERE id_karyawan='".$_GET['kode']."'";
         $query_cek = mysqli_query($koneksi, $sql_cek);
         $data_cek = mysqli_fetch_array($query_cek,MYSQLI_BOTH);
     }
@@ -10,7 +10,7 @@
 <section class="content-header">
 	<h1>
 		Master Data
-		<small>siswa</small>
+		<small>karyawan</small>
 	</h1>
 	<ol class="breadcrumb">
 		<li>
@@ -28,7 +28,7 @@
 			<!-- general form elements -->
 			<div class="box box-success">
 				<div class="box-header with-border">
-					<h3 class="box-title">Ubah siswa</h3>
+					<h3 class="box-title">Ubah karyawan</h3>
 					<div class="box-tools pull-right">
 						<button type="button" class="btn btn-box-tool" data-widget="collapse">
 							<i class="fa fa-minus"></i>
@@ -44,14 +44,14 @@
 					<div class="box-body">
 
 						<div class="form-group">
-							<label>NIS</label>
-							<input type='text' class="form-control" name="nis" value="<?php echo $data_cek['nis']; ?>"
+							<label>ID Karyawan</label>
+							<input type='text' class="form-control" name="id_karyawan" value="<?php echo $data_cek['id_karyawan']; ?>"
 							 readonly>
 						</div>
 
 						<div class="form-group">
-							<label>Nama siswa</label>
-							<input class="form-control" name="nama_siswa" value="<?php echo $data_cek['nama_siswa']; ?>"
+							<label>Nama karyawan</label>
+							<input class="form-control" name="nama_karyawan" value="<?php echo $data_cek['nama_karyawan']; ?>"
 							/>
 						</div>
 
@@ -71,20 +71,20 @@
 						</div>
 
 						<div class="form-group">
-							<label>Kelas</label>
-							<select name="id_kelas" id="id_kelas" class="form-control" required>
+							<label>UPT</label>
+							<select name="id_upt" id="id_upt" class="form-control" required>
 								<option value="">-- Pilih --</option>
 								<?php
                                     // ambil data dari database
-                                    $query = "select * from tb_kelas";
+                                    $query = "select * from tb_upt";
                                     $hasil = mysqli_query($koneksi, $query);
                                     while ($row = mysqli_fetch_array($hasil)) {
 
                                     //mengecek data yang dipilih sebelumnya
                                     ?>
-								<option value="<?php echo $row['id_kelas'] ?>" <?=$data_cek[
-								 'id_kelas']==$row[ 'id_kelas'] ? "selected" : null ?>>
-									<?php echo $row['kelas'] ?>
+								<option value="<?php echo $row['id_upt'] ?>" <?=$data_cek[
+								 'id_upt']==$row[ 'id_upt'] ? "selected" : null ?>>
+									<?php echo $row['upt'] ?>
 								</option>
 								<?php
                             }
@@ -121,7 +121,7 @@
 
 					<div class="box-footer">
 						<input type="submit" name="Ubah" value="Ubah" class="btn btn-success">
-						<a href="?page=MyApp/data_siswa" class="btn btn-warning">Batal</a>
+						<a href="?page=MyApp/data_karyawan" class="btn btn-warning">Batal</a>
 					</div>
 				</form>
 			</div>
@@ -132,13 +132,13 @@
 
 if (isset ($_POST['Ubah'])){
     //mulai proses ubah
-    $sql_ubah = "UPDATE tb_siswa SET
-        nama_siswa='".$_POST['nama_siswa']."',
+    $sql_ubah = "UPDATE tb_karyawan SET
+        nama_karyawan='".$_POST['nama_karyawan']."',
         jekel='".$_POST['jekel']."',
-        id_kelas='".$_POST['id_kelas']."',
+        id_upt='".$_POST['id_upt']."',
         th_masuk='".$_POST['th_masuk']."',
         status='".$_POST['status']."'
-        WHERE nis='".$_POST['nis']."'";
+        WHERE id_karyawan='".$_POST['id_karyawan']."'";
     $query_ubah = mysqli_query($koneksi, $sql_ubah);
 
     if ($query_ubah) {
@@ -146,7 +146,7 @@ if (isset ($_POST['Ubah'])){
         Swal.fire({title: 'Ubah Data Berhasil',text: '',icon: 'success',confirmButtonText: 'OK'
         }).then((result) => {
             if (result.value) {
-                window.location = 'index.php?page=MyApp/data_siswa';
+                window.location = 'index.php?page=MyApp/data_karyawan';
             }
         })</script>";
         }else{
@@ -154,7 +154,7 @@ if (isset ($_POST['Ubah'])){
         Swal.fire({title: 'Ubah Data Gagal',text: '',icon: 'error',confirmButtonText: 'OK'
         }).then((result) => {
             if (result.value) {
-                window.location = 'index.php?page=MyApp/data_siswa';
+                window.location = 'index.php?page=MyApp/data_karyawan';
             }
         })</script>";
     }

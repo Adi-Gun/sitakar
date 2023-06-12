@@ -8,7 +8,7 @@
 		<li>
 			<a href="index.php">
 				<i class="fa fa-home"></i>
-				<b>SIRAJUNG</b>
+				<b>SITAKAR</b>
 			</a>
 		</li>
 	</ol>
@@ -20,7 +20,7 @@
 			<!-- general form elements -->
 			<div class="box box-primary">
 				<div class="box-header with-border">
-					<h3 class="box-title">Cari Siswa</h3>
+					<h3 class="box-title">Cari karyawan</h3>
 					<div class="box-tools pull-right">
 						<button type="button" class="btn btn-box-tool" data-widget="collapse">
 							<i class="fa fa-minus"></i>
@@ -36,19 +36,19 @@
 					<div class="box-body">
 
 						<div class="form-group">
-							<label>Siswa</label>
-							<select name="nis" id="nis" class="form-control select2" style="width: 100%;">
+							<label>Karyawan</label>
+							<select name="id_karyawan" id="id_karyawan" class="form-control select2" style="width: 100%;">
 								<option selected="selected">-- Pilih --</option>
 								<?php
                         // ambil data dari database
-                        $query = "select * from tb_siswa where status='Aktif'";
+                        $query = "select * from tb_karyawan where status='Aktif'";
                         $hasil = mysqli_query($koneksi, $query);
                         while ($row = mysqli_fetch_array($hasil)) {
                         ?>
-								<option value="<?php echo $row['nis'] ?>">
-									<?php echo $row['nis'] ?>
+								<option value="<?php echo $row['id_karyawan'] ?>">
+									<?php echo $row['id_karyawan'] ?>
 									-
-									<?php echo $row['nama_siswa'] ?>
+									<?php echo $row['nama_karyawan'] ?>
 								</option>
 								<?php
                         }
@@ -75,13 +75,13 @@
 <script src="././bootstrap/lookup.js"></script>
 <script>
 	$(document).ready(function() {
-		$('#nis').change(function() {
-			var nis = $(this).val();
+		$('#id_karyawan').change(function() {
+			var id_karyawan = $(this).val();
 			$.ajax({
 				url: "plugins/proses-ajax.php",
 				method: "POST",
 				data: {
-					nis: nis
+					id_karyawan: id_karyawan
 				},
 				success: function(data) {
 					$('#saldo').val(data);

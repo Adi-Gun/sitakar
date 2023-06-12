@@ -12,7 +12,7 @@ $data_nama = $_SESSION["ses_nama"];
 		<li>
 			<a href="index.php">
 				<i class="fa fa-home"></i>
-				<b>SIRAJUNG</b>
+				<b>SITAKAR</b>
 			</a>
 		</li>
 	</ol>
@@ -57,7 +57,7 @@ $data_nama = $_SESSION["ses_nama"];
 					<thead>
 						<tr>
 							<th>No</th>
-							<th>NIS</th>
+							<th>ID Karyawan</th>
 							<th>Nama</th>
 							<th>Tanggal</th>
 							<th>Tarikan</th>
@@ -70,9 +70,9 @@ $data_nama = $_SESSION["ses_nama"];
 						<?php
 
                   $no = 1;
-				  $sql = $koneksi->query("select s.nis, s.nama_siswa, t.id_tabungan, t.tarik, t.tgl, t.petugas from 
-				  tb_siswa s join tb_tabungan t on s.nis=t.nis 
-				  where jenis ='TR' order by tgl desc, id_tabungan desc");
+				  $sql = $koneksi->query("select k.id_karyawan, k.nama_karyawan, t.id_tabungan, t.tarik, t.tgl, t.petugas from 
+				  tb_karyawan k join tb_tabungan t on k.id_karyawan=t.id_karyawan 
+				  where jenis ='TR' order by tgl desc, id_karyawan desc");
                   while ($data= $sql->fetch_assoc()) {
                 ?>
 
@@ -81,10 +81,10 @@ $data_nama = $_SESSION["ses_nama"];
 								<?php echo $no++; ?>
 							</td>
 							<td>
-								<?php echo $data['nis']; ?>
+								<?php echo $data['id_karyawan']; ?>
 							</td>
 							<td>
-								<?php echo $data['nama_siswa']; ?>
+								<?php echo $data['nama_karyawan']; ?>
 							</td>
 							<td>
 								<?php  $tgl = $data['tgl']; echo date("d/M/Y", strtotime($tgl))?>

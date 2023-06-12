@@ -15,11 +15,11 @@
     include "inc/koneksi.php";
     //FUNGSI RUPIAH
 	include "inc/rupiah.php";
-	//Profil Sekolah
+	//Profil UPT
 	$sql = $koneksi->query("SELECT * from tb_profil");
 	while ($data= $sql->fetch_assoc()) {
 	
-		$nama=$data['nama_sekolah'];
+		$nama=$data['nama_upt'];
 	}
 ?>
 
@@ -29,8 +29,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>SIRAJUNG - Sistem Informasi Rajin Menabung</title>
-	<link rel="icon" href="dist/img/logo_sirajung.png">
+	<title>SITAKAR - Sistem Informasi Tabungan Karyawan</title>
+	<link rel="icon" href="dist/img/sitakar.png">
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<!-- Bootstrap 3.3.6 -->
@@ -61,7 +61,7 @@
 			<a href="index.php" class="logo">
 				<span class="logo-lg">
 					<!-- <img src="dist/img/logo_sirajung.png" width="45px"> -->
-					<b>SIRAJUNG</b>
+					<b>SITAKAR</b>
 				</span>
 			</a>
 			<!-- Header Navbar: style can be found in header.less -->
@@ -101,7 +101,7 @@
 				</<b>
 				<div class="user-panel">
 					<div class="pull-left image">
-						<img src="dist/img/logo_sirajung.png" class="img-circle" alt="User Image">
+						<img src="dist/img/sitakar.png" class="img-circle" alt="User Image">
 					</div>
 					<div class="pull-left info">
 						<p>
@@ -143,12 +143,12 @@
 						<ul class="treeview-menu">
 
 							<li>
-								<a href="?page=MyApp/data_siswa">
-									<i class="fa fa-users"></i>Siswa</a>
+								<a href="?page=MyApp/data_karyawan">
+									<i class="fa fa-users"></i>Karyawan</a>
 							</li>
 							<li>
-								<a href="?page=MyApp/data_kelas">
-									<i class="fa fa-feed"></i>Kelas</a>
+								<a href="?page=MyApp/data_upt">
+									<i class="fa fa-feed"></i>UPT</a>
 							</li>
 						</ul>
 					</li>
@@ -210,7 +210,7 @@
 					<li class="treeview">
 						<a href="?page=MyApp/data_profil">
 							<i class="fa fa-bank"></i>
-							<span>Profil Sekolah</span>
+							<span>Profil UPT</span>
 							<span class="pull-right-container">
 							</span>
 						</a>
@@ -328,32 +328,32 @@
                   break;
 
 
-              //Kelas
-              case 'MyApp/data_kelas':
-                  include "admin/kelas/data_kelas.php";
+              //upt
+              case 'MyApp/data_upt':
+                  include "admin/upt/data_upt.php";
                   break;
-              case 'MyApp/add_kelas':
-                  include "admin/kelas/add_kelas.php";
+              case 'MyApp/add_upt':
+                  include "admin/upt/add_upt.php";
                   break;
-              case 'MyApp/edit_kelas':
-                  include "admin/kelas/edit_kelas.php";
+              case 'MyApp/edit_upt':
+                  include "admin/upt/edit_upt.php";
                   break;
-              case 'MyApp/del_kelas':
-                  include "admin/kelas/del_kelas.php";
+              case 'MyApp/del_upt':
+                  include "admin/upt/del_upt.php";
                   break;
 
-              //Siswa
-              case 'MyApp/data_siswa':
-                  include "admin/siswa/data_siswa.php";
+              //karyawan
+              case 'MyApp/data_karyawan':
+                  include "admin/karyawan/data_karyawan.php";
                   break;
-              case 'MyApp/add_siswa':
-                  include "admin/siswa/add_siswa.php";
+              case 'MyApp/add_karyawan':
+                  include "admin/karyawan/add_karyawan.php";
                   break;
-              case 'MyApp/edit_siswa':
-                  include "admin/siswa/edit_siswa.php";
+              case 'MyApp/edit_karyawan':
+                  include "admin/karyawan/edit_karyawan.php";
                   break;
-              case 'MyApp/del_siswa':
-                  include "admin/siswa/del_siswa.php";
+              case 'MyApp/del_karyawan':
+                  include "admin/karyawan/del_karyawan.php";
 				  break;
 				  
 				//Setor

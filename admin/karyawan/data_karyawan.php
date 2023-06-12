@@ -1,13 +1,13 @@
 <section class="content-header">
 	<h1>
 		Master Data
-		<small>Kelas</small>
+		<small>Karyawn</small>
 	</h1>
 	<ol class="breadcrumb">
 		<li>
 			<a href="index.php">
 				<i class="fa fa-home"></i>
-				<b>SIRAJUNG</b>
+				<b>SITAKAR</b>
 			</a>
 		</li>
 	</ol>
@@ -16,7 +16,7 @@
 <section class="content">
 	<div class="box box-primary">
 		<div class="box-header with-border">
-			<a href="?page=MyApp/add_kelas" title="Tambah Data" class="btn btn-primary">
+			<a href="?page=MyApp/add_karyawan" title="Tambah Data" class="btn btn-primary">
 				<i class="glyphicon glyphicon-plus"></i> Tambah Data</a>
 			<div class="box-tools pull-right">
 				<button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -34,7 +34,12 @@
 					<thead>
 						<tr>
 							<th>No</th>
-							<th>Kelas</th>
+							<th>ID_karyawan</th>
+							<th>Nama</th>
+							<th>JK</th>
+							<th>UPT</th>
+							<th>Status</th>
+							<th>Th Masuk</th>
 							<th>Aksi</th>
 						</tr>
 					</thead>
@@ -42,7 +47,9 @@
 
 						<?php
                   $no = 1;
-                  $sql = $koneksi->query("SELECT * FROM tb_kelas");
+                  $sql = $koneksi->query("SELECT s.id_karyawan, s.nama_karyawan, s.jekel, s.status, s.th_masuk, k.upt 
+                  from tb_karyawan s inner join tb_upt k on s.id_upt=k.id_upt 
+                  order by upt asc, id_karyawan asc");
                   while ($data= $sql->fetch_assoc()) {
                 ?>
 
@@ -51,17 +58,42 @@
 								<?php echo $no++; ?>
 							</td>
 							<td>
-								<?php echo $data['kelas']; ?>
+								<?php echo $data['id_karyawan']; ?>
 							</td>
 							<td>
-								<a href="?page=MyApp/edit_kelas&kode=<?php echo $data['id_kelas']; ?>" title="Ubah"
+								<?php echo $data['nama_karyawan']; ?>
+							</td>
+							<td>
+								<?php echo $data['jekel']; ?>
+							</td>
+							<td>
+								<?php echo $data['upt']; ?>
+							</td>
+
+							<?php $warna = $data['status']  ?>
+							<td>
+								<?php if ($warna == 'Aktif') { ?>
+								<span class="label label-primary">Aktif</span>
+								<?php } elseif ($warna == 'Lulus') { ?>
+								<span class="label label-success">Lulus</span>
+								<?php } elseif ($warna == 'Pindah') { ?>
+								<span class="label label-danger">Pindah</span>
+							</td>
+							<?php } ?>
+
+							<td>
+								<?php echo $data['th_masuk']; ?>
+							</td>
+
+							<td>
+								<a href="?page=MyApp/edit_karyawan&kode=<?php echo $data['id_karyawan']; ?>" title="Ubah"
 								 class="btn btn-success">
 									<i class="glyphicon glyphicon-edit"></i>
 								</a>
-								<a href="?page=MyApp/del_kelas&kode=<?php echo $data['id_kelas']; ?>" onclick="return confirm('Yakin Hapus Data Ini ?')"
+								<a href="?page=MyApp/del_karyawan&kode=<?php echo $data['id_karyawan']; ?>" onclick="return confirm('Yakin Hapus Data Ini ?')"
 								 title="Hapus" class="btn btn-danger">
 									<i class="glyphicon glyphicon-trash"></i>
-									</>
+									</a>
 							</td>
 						</tr>
 						<?php

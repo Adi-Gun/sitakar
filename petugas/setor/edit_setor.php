@@ -1,9 +1,9 @@
 <?php
 
     if(isset($_GET['kode'])){
-        $sql_cek = "select s.nis, s.nama_siswa, t.id_tabungan, t.setor, t.tgl, t.petugas from 
-        tb_siswa s join tb_tabungan t on s.nis=t.nis 
-        where jenis ='ST' and id_tabungan='".$_GET['kode']."'";
+        $sql_cek = "select k.id_karyawan, k.nama_karyawan, t.id_tabungan, t.setor, t.tgl, t.petugas from 
+        tb_karyawan k join tb_tabungan t on k.id_karyawan=t.id_karyawan 
+        where jenis='ST' and id_tabungan='".$_GET['kode']."'";
         $query_cek = mysqli_query($koneksi, $sql_cek);
         $data_cek = mysqli_fetch_array($query_cek,MYSQLI_BOTH);
     }
@@ -20,7 +20,7 @@
 		<li>
 			<a href="index.php">
 				<i class="fa fa-home"></i>
-				<b>SIRAJUNG</b>
+				<b>SITAKAR</b>
 			</a>
 		</li>
 	</ol>
@@ -53,18 +53,18 @@
 						</div>
 
 						<div class="form-group">
-							<label>Siswa</label>
-							<select name="nis" id="nis" class="form-control select2" style="width: 100%; ">
+							<label>Karyawan</label>
+							<select name="id_karyawan" id="id_karyawan" class="form-control select2" style="width: 100%; ">
 								<option selected="">-- Pilih --</option>
 								<?php
                         // ambil data dari database
-                        $query = "select * from tb_siswa";
+                        $query = "select * from tb_karyawan";
                         $hasil = mysqli_query($koneksi, $query);
                         while ($row = mysqli_fetch_array($hasil)) {
                         ?>
-								<option value="<?php echo $row['nis'] ?>" <?=$data_cek[
-								 'nis']==$row[ 'nis'] ? "selected" : null ?>>
-									<?php echo $row['nama_siswa'] ?>
+								<option value="<?php echo $row['id_karyawan'] ?>" <?=$data_cek[
+								 'id_karyawan']==$row[ 'id_karyawan'] ? "selected" : null ?>>
+									<?php echo $row['nama_karyawan'] ?>
 								</option>
 								<?php
                         }
@@ -100,7 +100,7 @@ if (isset ($_POST['Ubah'])){
 		$setor_hasil=preg_replace("/[^0-9]/", "", $setor);
 
         $sql_ubah = "UPDATE tb_tabungan SET
-            nis='".$_POST['nis']."',
+            id_karyawan='".$_POST['id_karyawan']."',
             setor='".$setor_hasil."',
             tgl='".$tanggal."'
             WHERE id_tabungan='".$_POST['id_tabungan']."'";

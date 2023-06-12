@@ -1,7 +1,7 @@
 <section class="content-header">
 	<h1>
 		Master Data
-		<small>Kelas</small>
+		<small>UPT</small>
 	</h1>
 	<ol class="breadcrumb">
 		<li>
@@ -19,7 +19,7 @@
 			<!-- general form elements -->
 			<div class="box box-info">
 				<div class="box-header with-border">
-					<h3 class="box-title">Tambah Kelas</h3>
+					<h3 class="box-title">Tambah UPT</h3>
 					<div class="box-tools pull-right">
 						<button type="button" class="btn btn-box-tool" data-widget="collapse">
 							<i class="fa fa-minus"></i>
@@ -34,8 +34,8 @@
 				<form action="" method="post" enctype="multipart/form-data">
 					<div class="box-body">
 						<div class="form-group">
-							<label>Kelas</label>
-							<input type="text" name="kelas" id="kelas" class="form-control" placeholder="Kelas">
+							<label>UPT</label>
+							<input type="text" name="upt" id="upt" class="form-control" placeholder="upt">
 						</div>
 
 					</div>
@@ -43,7 +43,7 @@
 
 					<div class="box-footer">
 						<input type="submit" name="Simpan" value="Simpan" class="btn btn-info">
-						<a href="?page=MyApp/data_kelas" class="btn btn-warning">Batal</a>
+						<a href="?page=MyApp/data_upt" class="btn btn-warning">Batal</a>
 					</div>
 				</form>
 			</div>
@@ -54,7 +54,7 @@
 
     if (isset ($_POST['Simpan'])){
     
-        $sql_simpan = "INSERT INTO tb_kelas (kelas) VALUES ('".$_POST['kelas']."')";
+        $sql_simpan = "INSERT INTO tb_upt (upt) VALUES ('".$_POST['upt']."')";
 		$query_simpan = mysqli_query($koneksi, $sql_simpan);
 		mysqli_close($koneksi);
 		
@@ -64,7 +64,7 @@
       Swal.fire({title: 'Tambah Data Berhasil',text: '',icon: 'success',confirmButtonText: 'OK'
       }).then((result) => {
           if (result.value) {
-              window.location = 'index.php?page=MyApp/data_kelas';
+              window.location = 'index.php?page=MyApp/data_upt';
           }
       })</script>";
       }else{
@@ -72,7 +72,7 @@
       Swal.fire({title: 'Tambah Data Gagal',text: '',icon: 'error',confirmButtonText: 'OK'
       }).then((result) => {
           if (result.value) {
-              window.location = 'index.php?page=MyApp/add_kelas';
+              window.location = 'index.php?page=MyApp/add_upt';
           }
       })</script>";
     }

@@ -8,13 +8,13 @@
 
 <section class="content-header">
 	<h1>
-		Profil Sekolah
+		Profil UPT
 	</h1>
 	<ol class="breadcrumb">
 		<li>
 			<a href="index.php">
 				<i class="fa fa-home"></i>
-				<b>SIRAJUNG</b>
+				<b>SITAKAR</b>
 			</a>
 		</li>
 	</ol>
@@ -47,22 +47,17 @@
 						</div>
 
 						<div class="form-group">
-							<label>Nama Sekolah</label>
-							<input class="form-control" name="nama_sekolah" value="<?php echo $data_cek['nama_sekolah']; ?>"
+							<label>Nama UPT</label>
+							<input class="form-control" name="nama_upt" value="<?php echo $data_cek['nama_upt']; ?>"
 							/>
 						</div>
 
 						<div class="form-group">
-							<label>alamat</label>
+							<label>Alamat</label>
 							<input class="form-control" name="alamat" value="<?php echo $data_cek['alamat']; ?>"
 							/>
 						</div>
 
-						<div class="form-group">
-							<label>Akreditasi</label>
-							<input type="text" class="form-control" name="akreditasi" value="<?php echo $data_cek['akreditasi']; ?>"
-							/>
-						</div>
 
 					</div>
 					<!-- /.box-body -->
@@ -81,9 +76,8 @@
 if (isset ($_POST['Ubah'])){
     //mulai proses ubah
     $sql_ubah = "UPDATE tb_profil SET
-        nama_sekolah='".$_POST['nama_sekolah']."',
-        alamat='".$_POST['alamat']."',
-        akreditasi='".$_POST['akreditasi']."'
+        nama_upt='".$_POST['nama_upt']."',
+        alamat='".$_POST['alamat']."'
         WHERE id_profil='".$_POST['id_profil']."'";
     $query_ubah = mysqli_query($koneksi, $sql_ubah);
     if ($query_ubah) {

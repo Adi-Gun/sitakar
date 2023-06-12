@@ -1,10 +1,10 @@
 <!-- Content Header (Page header) -->
 <?php
-    $nis = $_POST["nis"];
+    $id_karyawan = $_POST["id_karyawan"];
 ?>
 
 <?php
-	$sql = $koneksi->query("SELECT SUM(setor) as Tsetor  from tb_tabungan where jenis='ST' and nis='$nis'");
+	$sql = $koneksi->query("SELECT SUM(setor) as Tsetor  from tb_tabungan where jenis='ST' and id_karyawan='$id_karyawan'");
 	while ($data= $sql->fetch_assoc()) {
 	
 		$setor=$data['Tsetor'];
@@ -12,7 +12,7 @@
 ?>
 
 <?php
-	$sql = $koneksi->query("SELECT SUM(tarik) as Ttarik  from tb_tabungan where jenis='TR' and nis='$nis'");
+	$sql = $koneksi->query("SELECT SUM(tarik) as Ttarik  from tb_tabungan where jenis='TR' and id_karyawan='$id_karyawan'");
 	while ($data= $sql->fetch_assoc()) {
 	
 		$tarik=$data['Ttarik'];
@@ -23,13 +23,13 @@
 <section class="content-header">
 	<h1>
 		Tabungan
-		<small>Siswa</small>
+		<small>Karyawan</small>
 	</h1>
 	<ol class="breadcrumb">
 		<li>
 			<a href="index.php">
 				<i class="fa fa-home"></i>
-				<b>SIRAJUNG</b>
+				<b>SITAKAR</b>
 			</a>
 		</li>
 	</ol>
@@ -67,7 +67,7 @@
 		<div class="box-header">
 			<a href="?page=view_tabungan" class="btn btn-primary">
 				<i class="glyphicon glyphicon-arrow-left"></i> Kembali</a>
-			<a href="./report/cetak-tabungan.php?nis=<?php echo $nis ?>" target=" _blank"
+			<a href="./report/cetak-tabungan.php?id_karyawan=<?php echo $id_karyawan ?>" target=" _blank"
 			 class="btn btn-default">
 				<i class="glyphicon glyphicon-print"></i> Cetak</a>
 			<div class="box-tools pull-right">
@@ -86,7 +86,7 @@
 					<thead>
 						<tr>
 							<th>No</th>
-							<th>NIS</th>
+							<th>ID Karyawan</th>
 							<th>Nama</th>
 							<th>Tanggal</th>
 							<th>Setoran</th>
@@ -99,9 +99,9 @@
 						<?php
 
                   $no = 1;
-				  $sql = $koneksi->query("select s.nis, s.nama_siswa, t.id_tabungan, t.setor, t.tarik, t.tgl, t.petugas from 
-				  tb_siswa s join tb_tabungan t on s.nis=t.nis 
-				  where s.nis ='$nis' order by tgl asc");
+				  $sql = $koneksi->query("select k.id_karyawan, k.nama_karyawan, t.id_tabungan, t.setor, t.tarik, t.tgl, t.petugas from 
+				  tb_karyawan k join tb_tabungan t on k.id_karyawan=t.id_karyawan 
+				  where k.id_karyawan ='$id_karyawan' order by tgl asc");
                   while ($data= $sql->fetch_assoc()) {
                 ?>
 
@@ -110,10 +110,10 @@
 								<?php echo $no++; ?>
 							</td>
 							<td>
-								<?php echo $data['nis']; ?>
+								<?php echo $data['id_karyawan']; ?>
 							</td>
 							<td>
-								<?php echo $data['nama_siswa']; ?>
+								<?php echo $data['nama_karyawan']; ?>
 							</td>
 							<td>
 								<?php  $tgl = $data['tgl']; echo date("d/M/Y", strtotime($tgl))?>

@@ -10,8 +10,8 @@ include "inc/koneksi.php";
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>LOGIN | SIRAJUNG</title>
-	<link rel="icon" href="dist/img/logo_sirajung.png">
+	<title>LOGIN | SITAKAR</title>
+	<link rel="icon" href="dist/img/sitakar.png">
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<!-- Bootstrap 3.3.6 -->
@@ -28,9 +28,9 @@ include "inc/koneksi.php";
 	<div class="login-box">
 		<div class="login-logo">
 			<a href="#">
-				<img src="dist/img/logo_sirajung.png" style="width: 100px; height: 100px;">
-				<h1 style="color: white;"><b>SIRAJUNG</b></h1>
-				<h2 style="color: white;">Sistem Informasi Rajin Menabung</h2>
+				<img src="dist/img/sitakar.png" style="width: 100px; height: 100px;">
+				<h1 style="color: white;"><b>SITAKAR</b></h1>
+				<h2 style="color: white;">Sistem Informasi Tabungan Karyawan</h2>
 				</a>
 		</div>
 		<!-- /.login-logo -->
@@ -52,8 +52,8 @@ include "inc/koneksi.php";
 					</div>
 					<!-- /.col -->
 					<div class="col-xs-4">
-						<button type="submit" class="btn btn-primary btn-block btn-flat" name="btnLogin" title="Masuk Sistem" style="border-radius:10px;">
-							<b>Login</b>
+						<button type="submit" class="btn btn-block btn-flat" name="btnLogin" title="Masuk Sistem" style="border-radius:10px; background-color: #B27946;">
+							<b style="color:white;">Login</b>
 						</button>
 					</div>
 					<!-- /.col -->
@@ -73,13 +73,13 @@ include "inc/koneksi.php";
 	<!-- iCheck -->
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 	<!-- sweet alert -->
-	<body class="hold-transition login-page" style="background:url(dist/img/background_login.jpg)
+	<body class="hold-transition login-page" style="background:url(dist/img/login.png)
 no-repeat center center fixed; background-size: cover;
  -webkit-background-size: cover; 
  -moz-background-size: cover; -o-background-size: cover;">
 </body>
 <footer style="text-align: center;">
-	<strong style="color:white;">&copy; 2023 Dikembangkan Oleh<a> ICT POMOSDA</a></strong>
+	<strong style="color:white;">&copy; 2023 Dikembangkan Oleh<a style="color:white;"> ICT POMOSDA</a></strong>
 </footer>
 
 </html>

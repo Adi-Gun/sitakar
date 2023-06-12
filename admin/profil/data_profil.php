@@ -1,12 +1,12 @@
 <section class="content-header">
 	<h1>
-		Profil Sekolah
+		Profil UPT
 	</h1>
 	<ol class="breadcrumb">
 		<li>
 			<a href="index.php">
 				<i class="fa fa-home"></i>
-				<b>SIRAJUNG</b>
+				<b>SITAKAR</b>
 			</a>
 		</li>
 	</ol>
@@ -32,9 +32,8 @@
 					<thead>
 						<tr>
 							<th>No</th>
-							<th>Nama Sekolah</th>
+							<th>Nama UPT</th>
 							<th>Alamat</th>
-							<th>Akreditasi</th>
 							<th>Aksi</th>
 						</tr>
 					</thead>
@@ -51,14 +50,10 @@
 								<?php echo $no++; ?>
 							</td>
 							<td>
-								<?php echo $data['nama_sekolah']; ?>
+								<?php echo $data['nama_upt']; ?>
 							</td>
 							<td>
 								<?php echo $data['alamat']; ?>
-							</td>
-							<td>
-								Akreditasi
-								<?php echo $data['akreditasi']; ?>
 							</td>
 							<td>
 								<a href="?page=MyApp/edit_profil&kode=<?php echo $data['id_profil']; ?>" title="Ubah"
