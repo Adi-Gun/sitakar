@@ -129,8 +129,8 @@ $tanggal = date("Y-m-d");
 <script src="././bootstrap/lookup.js"></script>  
 <script>
     $(document).ready(function(){  
-        $('#id_karyawan').change(function(){  
-            var id_karyawan = $(this).val();  
+        $('#nis').change(function(){  
+            var nis = $(this).val();  
             $.ajax({  
                 url:"plugins/proses-ajax.php",  
                 method:"POST",  
